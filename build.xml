@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="lab3" default="javadoc" basedir=".">
+    <!-- Основні шляхи -->
+    <property name="src.dir" value="src"/>
+    <property name="javadoc.dir" value="javadoc"/>
+    <property name="java.version" value="11"/>
+
+    <!-- Створення папки для документації -->
+    <target name="init">
+        <mkdir dir="${javadoc.dir}"/>
+    </target>
+
+    <!-- Генерація об'єднаної Javadoc -->
+    <target name="javadoc" depends="init">
+        <echo>Генерація Javadoc для org.example та work3...</echo>
+        <javadoc sourcepath="${src.dir}"
+                 destdir="${javadoc.dir}/combined"
+                 packagenames="org.example,work3"
+                 author="true"
+                 version="true"
+                 windowtitle="lab3 API"
+                 doctitle="lab3 API Documentation"
+                 use="true"
+                 failonerror="true"
+                 encoding="UTF-8"
+                 charset="UTF-8"
+                 maxmemory="512m">
+            <link href="https://docs.oracle.com/en/java/javase/11/docs/api/"/>
+        </javadoc>
+    </target>
+
+    <!-- Очистка -->
+    <target name="clean">
+        <delete dir="${javadoc.dir}"/>
+    </target>
+</project>
